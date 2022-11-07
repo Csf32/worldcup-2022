@@ -1,8 +1,10 @@
+
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-
-const games =
+const main = () =>
+   prisma.game.createMany({
+      data: 
 [
     {
       "gameTime": "2022-11-20T16:00:00Z",
@@ -246,27 +248,7 @@ const games =
       "homeTeam": "cam",
       "awayTeam": "bra"
     }
-  ]
+  ],
+    })
 
-  const main = ()=> 
-    
-    prisma.game.createMany({
-       
-      data: games
-  })
-
-    //Para verificar se a tabela foi enviada, se der erro utiliza o catch
-    //Fez uma arrow function e colocou a constante data para ser chamada
-    //Se der erro cai no catch
-
-    //main().then((data) =>{
-      //console.log(data)
-
-   // }).catch((error) => {
-        //console.log(error)
-    //})}
-
-    main()
-    .then(console.log)
-    .catch(console.log)
-  
+main().catch().then()

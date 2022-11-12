@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: 'Cairo', sans-serif;
+    /*Utilizar o tailwind dentro do css*/
+    @apply text-red-700;
+} 
+
+input{
+    /*Usado para retirar e zerar a linha que fica na borda do iinput*/
+        outline: 0;
+    }

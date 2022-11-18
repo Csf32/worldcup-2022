@@ -11,8 +11,6 @@ export default defineConfig({
   plugins: [react(), svgr()],
   resolve: {
     alias:{
-      //Dirname é uma variável global do node que se refere a pasta principal do arquivo
-      //O @ é o caminho do src
       '@':path.resolve(__dirname, './src'),
     },
   }

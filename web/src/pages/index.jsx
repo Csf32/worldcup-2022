@@ -1,10 +1,11 @@
+import { useLocalStorage } from 'react-use'
+
 import {
     createBrowserRouter,
     RouterProvider,
-    Route,
+    Route
   } from "react-router-dom";
 
-  //É preciso importar aqui a Home
 
   import { Home } from './Home'
   import { Login } from './Login'
@@ -13,47 +14,39 @@ import {
   import { Profile } from "./Profile/prof";
 
   const router = createBrowserRouter([
-    //Aqui são as rotas:
+
     {
-      path: "/", //Endereço
+      path: "/", 
       element: <Home />,
     },
 
     {
-      //O path não pode ser igual ao nome do arquivo, tipo login.jsx
+    
       path: "/login", 
       element: <Login />,
     },
-    /*
-    path: "/login",
-    element: <div>login</div>,
-  ,
-
-  
-  path: "/signup",
-  element: <div>Cadastro</div>,
-,*/
+   
     {
-      path: "/signup", //Endereço
+      path: "/signup", 
       element: <Signup />,
     },
 
     {
-      path: "/dashboard", //Endereço
+      path: "/dashboard", 
       element: <Dashboard />,
     },
 
     {
-      path: "/profile", //Endereço
+      path: "/profile",
       element: <Profile />,
     },
   ]);
   
-  //Modifica no main de App para Router, pois tudo isso será importado de lá
-  //App.jsx virou index.js na pasta home
+  export const Router = () => {
+    const [auth] = useLocalStorage('auth')
+    console.log(auth)
 
-  export const Router = () => (
-    <RouterProvider router={router} />
-  )
+    return <RouterProvider router={router} />
+  }
 
   

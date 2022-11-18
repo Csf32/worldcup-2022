@@ -13,7 +13,8 @@ export const create = async (ctx) => {
     const data = {
         name: ctx.request.body.name,
         username: ctx.request.body.username,
-        password,
+        email: ctx.request.body.email,
+        password
     }
 
     try {
@@ -36,10 +37,7 @@ export const create = async (ctx) => {
 export const login = async ctx => {
 
     const [type, token] = ctx.headers.authorization.split(" ")
-
     const [email, plainTextPassword] = atob(token).split(":")
-
-    console.log(decodedToken)
 
     const user = await prisma.user.findUnique ({
         where: { email }
@@ -57,7 +55,7 @@ export const login = async ctx => {
         return
     }
 
-    const { password, ...result} = user
+    const { password, ...result } = user
 
     const accessToken = jwt.sign({
        

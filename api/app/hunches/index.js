@@ -17,50 +17,50 @@ export const create = async (ctx) => {
     try {
             const data = jwt.verify(token, process.env.JWT_SECRET)
  
-        if(!ctx.request.body.homeTeamScore && !ctx.request.body.awayTeamScore) {
-            ctx.status = 400
-            return
-        }
-    
-        const userId = data.sub
-    
-        const { gameId } = ctx.request.body
-
-        const homeTeamScore = parseInt(ctx.request.body.homeTeamScore)
-        const awayTeamScore = parseInt(ctx.request.body.awayTeamScore)
-
-        try {
-
-            const [hunch] = await prisma.hunch.findMany ({
-
-                where: { gameId, userId },
-                
-            })
-
-            ctx.body = hunch
-            ? await prisma.hunch.update({
-                    where: {
-                        id: hunch.id 
-                    },
-                    data: {
-                        homeTeamScore, awayTeamScore
-                    }
-                })
-            
-                : prisma.hunch.create({
-                    data: {userId, gameId, homeTeamScore, awayTeamScore}
-                })
-            
-
+            if(!ctx.request.body.homeTeamScore && !ctx.request.body.awayTeamScore) {
+                ctx.status = 400
+                return
             }
+            
+            const userId = data.sub
+        
+            const { gameId } = ctx.request.body
 
-            catch (error) {
-                console.log(error)
-                ctx.body = error
-                ctx.status = 500
+            const homeTeamScore = parseInt(ctx.request.body.homeTeamScore)
+            const awayTeamScore = parseInt(ctx.request.body.awayTeamScore)
+
+            try {
+
+                    const [hunch] = await prisma.hunch.findMany ({
+
+                        where: { gameId, userId }
+                        
+                    })
+
+                    ctx.body = hunch
+                    
+                        ? await prisma.hunch.update({
+                            where: {
+                                id: hunch.id 
+                            },
+                            data: {
+                                homeTeamScore, awayTeamScore
+                            }
+                        })
+                    
+                        : prisma.hunch.create({
+                            data: {userId, gameId, homeTeamScore, awayTeamScore}
+                        })
+                    
+
+                }
+
+                    catch (error) {
+                        console.log(error)
+                        ctx.body = error
+                        ctx.status = 500
+                }
         }
-            }
-
         
         catch (error) {
             ctx.status = 401

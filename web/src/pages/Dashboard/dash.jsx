@@ -1,8 +1,5 @@
-//importar o ícone
-import { Icon, Card } from '@/components'
 
-//Fragment é um componente que se usa para englobar todo mundo em um componente
-// Fragment = <> é uma tag usada somente para não deixar os componentes fora de um grupo como div
+import { Icon, Card } from '@/components'
 export const Dashboard = () => ( 
     <>
 
@@ -26,29 +23,6 @@ export const Dashboard = () => (
             </section>
 
             <section id="content" className="container max-w-3xl p-4 space-y-4">
-
-{/* Foi criado isso tudo no components para facilitar, pois será padrão
-
-                <div className="rounded-xl border border-gray-300 p-4 text-center space-y-4">
-                    <span className="text-sm md:text-base text-gray-700 font-bold">7:00</span>
-                    
-                    <div className="flex space-x justify-center items-center">
-                        Para garantir que virá com letra maiúscula no banco de dados tmb
-                      
-                        <span className="uppercase">SUI</span>
-                        <img src="src/assets/images/flags/sui.png" alt="flag-Switzerland" />
-                        [0.2] = opacidade no tailwind
-                        <input max={10} type="number" className="bg-red-300/[0.2] w-[55px] h-[55px] font-red-700 text-xl text-center" name="" id="" />
-                        
-                        <span className="mx-4 text-red-500 font-bold"> X </span>
-                        
-                        <input max={10} type="number" className ="bg-red-300/[0.2] w-[55px] h-[55px] font-red-700 text-xl text-center"name="" id="" />
-                        <img src="src/assets/images/flags/cam.png" alt="flag-camaron" />
-                        <span className="uppercase">CAM</span>
-                        
-                    </div>
-                </div>
-                */}
                 
                 <div className="p-4 flex space-x-4 items center justify-center">
                     <Icon name ="arrowLeft" className="w-6"/>
@@ -56,7 +30,7 @@ export const Dashboard = () => (
                     <Icon name ="arrowRight" className="w-6 text-red-500"/>
                 </div>
                 <div className="space-y-4">
-                {/*Chama como objeto*/}
+              
                     <Card 
                         timeA={{slug: 'sui'}}
                         timeB={{slug: 'cam'}}

@@ -2,15 +2,14 @@ import axios from 'axios'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import { Icon } from '../../components'
-import { Input } from '../../components'
+import { Icon, Input } from '@/components'
 
 const validationSchema = yup.object().shape({
 
     name: yup.string().required("Preencha seu nome"),
-    username: yup.string().required("Preencha seu CPF"),
+    username: yup.string().required("Preencha seu nome de usuário"),
 
-    email: yup.string().email("Informe um e-mail válido").required("Preencha seu e-mail"),
+    email: yup.string().required("Preencha seu e-mail"),
     
     password: yup.string().required("Preencha sua senha")
   })
@@ -22,12 +21,13 @@ export const Signup = () => {
         
         onSubmit: async (values) => {
           
-         const res = await axios ({ 
-            method: 'post',
-            baseURL: 'http://localhost:3000',
-            url: '/users',
-            data: values
-          }) 
+            const res = await axios ({ 
+                method: 'post',
+                baseURL: 'http://localhost:3000',
+                url: '/users',
+                data: values
+            }) 
+
           console.log(res.data)
 
         },
@@ -96,7 +96,7 @@ export const Signup = () => {
                     />
 
                     <Input
-                        type="text"
+                        type="email"
                         name="email"
                         label="Seu e-mail"
                         placeholder= "Digite seu e-mail"
@@ -126,8 +126,8 @@ export const Signup = () => {
                     />
 
                     <button type = "submit" className="block w-full text-center text-white bg-red-500 px-6 py-3 rounded-xl disabled:opacity-50"
-                    disabled = { !formik.isValid }> 
-                            Criar minha conta
+                    disabled = { !formik.isValid || formik.isSubmitting}> 
+                             { formik.isSubmitting ? 'Carregando...' : 'Criar minha conta' }
                     </button>
                    
                 </form>

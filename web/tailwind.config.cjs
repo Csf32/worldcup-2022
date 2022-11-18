@@ -19,9 +19,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        //red vira um objeto, pois possui varios tipos
+    
         red: {
-          // os números são as intensidades proporcioanis das cores que serão chamadas com o background color (bg)
+          
 
           300:'#BB2E57',
           500:'#AF053F',

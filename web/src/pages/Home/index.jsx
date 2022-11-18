@@ -1,15 +1,6 @@
 
-//function mudou de App para Home
 export function Home (){
   return (
-
-//Começar pelo mobile
-    //rounded = borda; px = padding horizontal; flex = flexbox space = espaçamento
-    //md = tamanho responsivo para a tela desktop
-    //quando for vertical flex col, se utiliza o justify content para centralizar na vertical alinha no eixo principal
-    //para centralizar na horizontal, se utiliza o items-center sempre na transversal do eixo flex
-    //flex-1 divide os espaços na tela para cada um dos itens
-    //React Router DOM é o responsável por ligar as páginas com react
 
     <div className="md:h-screen p-4 bg-red-700 text-white flex flex-col items-center space-y-6">
 

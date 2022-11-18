@@ -4,12 +4,12 @@
   "description": "",
   "main": "server.js",
   "type": "module",
-  "scripts":{ 
-    "start": "node -r dotenv-safe/config server.js"},
+  "scripts": {
+    "start": "node -r dotenv-safe/config server.js"
+  },
   "prisma": {
     "seed": "node prisma/seed.js"
   },
-
   "author": "Caique Souza Fonseca",
   "license": "MIT",
   "dependencies": {
@@ -21,7 +21,8 @@
     "dotenv-safe": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
-    "koa-bodyparser": "^4.3.0"
+    "koa-bodyparser": "^4.3.0",
+    "react-use": "^17.4.0"
   },
   "devDependencies": {
     "prisma": "^4.5.0"
